@@ -1,0 +1,29 @@
+{
+  "name": "frontend-shared-components",
+  "version": "1.0.0",
+  "description": "Plethora frontend shared components",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/plethora/frontend-shared-components.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/plethora/frontend-shared-components/issues"
+  },
+  "homepage": "https://github.com/plethora/frontend-shared-components#readme",
+  "dependencies": {
+    "lodash": "^4.17.20",
+    "moment": "^2.29.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-onclickoutside": "^6.9.0",
+    "react-redux": "^7.2.1",
+    "redux": "^4.0.5",
+    "regenerator-runtime": "^0.13.7"
+  }
+}

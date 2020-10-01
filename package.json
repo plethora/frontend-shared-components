@@ -4,11 +4,13 @@
   "description": "Plethora frontend shared components",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d build",
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/plethora/frontend-shared-components.git"
+    "url": "git://github.com/plethora/frontend-shared-components.git"
   },
   "author": "",
   "license": "ISC",
@@ -26,7 +28,10 @@
     "redux": "^4.0.5",
     "regenerator-runtime": "^0.13.7"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@michaelhjnlee"
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1"
   }
 }

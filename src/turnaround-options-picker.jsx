@@ -1,8 +1,8 @@
 'use strict';
 
-import { bindAll, get, compact, find } from 'lodash';
-import moment from 'moment';
-import PropTypes from 'prop-types';
+// import { bindAll, get, compact, find } from 'lodash';
+// import moment from 'moment';
+// import PropTypes from 'prop-types';
 import React from 'react';
 // import onClickOutside from 'react-onclickoutside'
 // import { connect, } from 'react-redux';

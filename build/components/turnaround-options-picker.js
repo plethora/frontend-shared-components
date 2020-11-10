@@ -202,8 +202,9 @@ var TurnaroundOptionsPicker = function (_PopUp) {
     key: 'handleSelectDate',
     value: function handleSelectDate(m, turnaroundOption) {
       var _props2 = this.props,
-          selectShipDate = _props2.selectShipDate,
           noOrder = _props2.noOrder,
+          requestTrackingEvent = _props2.requestTrackingEvent,
+          selectShipDate = _props2.selectShipDate,
           setTurnaround = _props2.setTurnaround,
           turnaroundOptions = _props2.turnaroundOptions;
 

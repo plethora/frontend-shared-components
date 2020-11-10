@@ -144,7 +144,7 @@ class TurnaroundOptionsPicker extends PopUp {
    * @param {Object?} event - When present, available turnaround in the schedule
    */
   handleSelectDate(m, turnaroundOption) {
-    const { selectShipDate, noOrder, setTurnaround, turnaroundOptions } = this.props;
+    const { noOrder, requestTrackingEvent, selectShipDate, setTurnaround, turnaroundOptions } = this.props;
     if (noOrder) {
       //this is for autoquote and manual quote page
       const { turnaround, turnaround_idx } = this.findTurnaroundDay(turnaroundOptions, turnaroundOption.turnaround_days);

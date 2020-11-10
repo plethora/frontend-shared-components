@@ -1,1 +1,5 @@
-export { default as TurnaroundOptionsPicker } from './turnaround-options-picker';
+const TurnaroundOptionsPicker = require('./components/turnaround-options-picker').default;
+
+module.exports = {
+  TurnaroundOptionsPicker
+}

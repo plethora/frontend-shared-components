@@ -165,7 +165,7 @@ var TurnaroundOptionsPicker = function (_PopUp) {
             ),
             _react2.default.createElement(
               'div',
-              { className: 'turnaroundOption__cost' },
+              { className: styles ? styles["turnaroundOption__cost"] : "turnaroundOption__cost" },
               additionalCost ? additionalCost : dollarSigns
             )
           );

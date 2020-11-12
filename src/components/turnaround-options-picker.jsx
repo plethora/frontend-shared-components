@@ -89,13 +89,16 @@ class TurnaroundOptionsPicker extends PopUp {
   }
 
   renderDropdown() {
-    const { turnaroundOptions, onToggle, quantity, styles } = this.props;
+    const { appState, onToggle, order, quantity, selectedPart, styles, turnaroundOptions } = this.props;
+    const basePrice = selectedPart ? appState === 'ReadyToAddToCart' ? selectedPart.setup_cost + selectedPart.unit_cost : null : order ? order.base_price : null;
     return (
         <div className={styles ? styles["turnaroundOption__dropdown"] : "turnaroundOption__dropdown"}>
           {turnaroundOptions.map((turnaroundOption, i) => {
             const selectionDate = addBusinessDays(this.getToday(false, true), turnaroundOption.turnaround_days, this.state.blackOutDays, this.state.localTimeCutoff)
             const turnaround = this.findTurnaroundByMoment(selectionDate);
             const hasAvailability = quantity <= turnaround.max_quantity;
+            const additionalCost = basePrice ? `+ $${((turnaroundOption.turnaround_multiplier * basePrice) - basePrice).toFixed(2)}` : null;
+            const dollarSigns = turnaroundOption.turnaround_multiplier > 1.2 ? '+ $$$' : turnaroundOption.turnaround_multiplier > 1.1 ? '+ $$' : turnaroundOption.turnaround_multiplier > 1.0 ? '+ $' : '';
             return (
               <div className={styles ? styles["turnaroundOption__option"] : "turnaroundOption__option"}
                 key={i}
@@ -105,15 +108,11 @@ class TurnaroundOptionsPicker extends PopUp {
                   if (onToggle) onToggle();
                   if (this.togglePopup) this.closePopup();
                 }}>
-                <div className={styles ? styles["turnaroundOption__count"] : "turnaroundOption__count"}>
+                <div className={styles ? styles["turnaroundOption__name"] : "turnaroundOption__name"}>
                   {turnaroundOption.name}
                 </div>
                 <div className="turnaroundOption_cost">
-                  {turnaroundOption.turnaroundOption > 1 && (
-                    <div className="turnaroundOption__unit">
-                      each ${(turnaroundOption.totalturnaroundOption / turnaroundOption.turnaroundOption).toFixed(2)}
-                    </div>
-                  )}
+                  {additionalCost ? additionalCost : dollarSigns}
                 </div>
               </div>
             );

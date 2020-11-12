@@ -130,11 +130,15 @@ var TurnaroundOptionsPicker = function (_PopUp) {
       var _this3 = this;
 
       var _props = this.props,
-          turnaroundOptions = _props.turnaroundOptions,
+          appState = _props.appState,
           onToggle = _props.onToggle,
+          order = _props.order,
           quantity = _props.quantity,
-          styles = _props.styles;
+          selectedPart = _props.selectedPart,
+          styles = _props.styles,
+          turnaroundOptions = _props.turnaroundOptions;
 
+      var basePrice = selectedPart ? appState === 'ReadyToAddToCart' ? selectedPart.setup_cost + selectedPart.unit_cost : null : order ? order.base_price : null;
       return _react2.default.createElement(
         'div',
         { className: styles ? styles["turnaroundOption__dropdown"] : "turnaroundOption__dropdown" },
@@ -142,6 +146,8 @@ var TurnaroundOptionsPicker = function (_PopUp) {
           var selectionDate = (0, _addBusinessDays2.default)(_this3.getToday(false, true), turnaroundOption.turnaround_days, _this3.state.blackOutDays, _this3.state.localTimeCutoff);
           var turnaround = _this3.findTurnaroundByMoment(selectionDate);
           var hasAvailability = quantity <= turnaround.max_quantity;
+          var additionalCost = basePrice ? '+ $' + (turnaroundOption.turnaround_multiplier * basePrice - basePrice).toFixed(2) : null;
+          var dollarSigns = turnaroundOption.turnaround_multiplier > 1.2 ? '+ $$$' : turnaroundOption.turnaround_multiplier > 1.1 ? '+ $$' : turnaroundOption.turnaround_multiplier > 1.0 ? '+ $' : '';
           return _react2.default.createElement(
             'div',
             { className: styles ? styles["turnaroundOption__option"] : "turnaroundOption__option",
@@ -154,18 +160,13 @@ var TurnaroundOptionsPicker = function (_PopUp) {
               } },
             _react2.default.createElement(
               'div',
-              { className: styles ? styles["turnaroundOption__count"] : "turnaroundOption__count" },
+              { className: styles ? styles["turnaroundOption__name"] : "turnaroundOption__name" },
               turnaroundOption.name
             ),
             _react2.default.createElement(
               'div',
-              { className: 'turnaroundOption_cost' },
-              turnaroundOption.turnaroundOption > 1 && _react2.default.createElement(
-                'div',
-                { className: 'turnaroundOption__unit' },
-                'each $',
-                (turnaroundOption.totalturnaroundOption / turnaroundOption.turnaroundOption).toFixed(2)
-              )
+              { className: 'turnaroundOption__cost' },
+              additionalCost ? additionalCost : dollarSigns
             )
           );
         }),

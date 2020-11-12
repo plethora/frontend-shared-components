@@ -111,7 +111,7 @@ class TurnaroundOptionsPicker extends PopUp {
                 <div className={styles ? styles["turnaroundOption__name"] : "turnaroundOption__name"}>
                   {turnaroundOption.name}
                 </div>
-                <div className="turnaroundOption_cost">
+                <div className="turnaroundOption__cost">
                   {additionalCost ? additionalCost : dollarSigns}
                 </div>
               </div>

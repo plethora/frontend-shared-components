@@ -147,7 +147,7 @@ var TurnaroundOptionsPicker = function (_PopUp) {
           var turnaround = _this3.findTurnaroundByMoment(selectionDate);
           var hasAvailability = quantity <= turnaround.max_quantity;
           var additionalCost = basePrice ? '+ $' + (turnaroundOption.turnaround_multiplier * basePrice - basePrice).toFixed(2) : null;
-          var dollarSigns = turnaroundOption.turnaround_multiplier > 1.2 ? '+ $$$' : turnaroundOption.turnaround_multiplier > 1.1 ? '+ $$' : turnaroundOption.turnaround_multiplier > 1.0 ? '+ $' : '';
+          var dollarSigns = turnaroundOption.turnaround_multiplier > 1.2 ? '+$$$' : turnaroundOption.turnaround_multiplier > 1.1 ? '+$$' : turnaroundOption.turnaround_multiplier > 1.0 ? '+$' : '';
           return _react2.default.createElement(
             'div',
             { className: styles ? styles["turnaroundOption__option"] : "turnaroundOption__option",

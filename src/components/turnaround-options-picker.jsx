@@ -98,7 +98,7 @@ class TurnaroundOptionsPicker extends PopUp {
             const turnaround = this.findTurnaroundByMoment(selectionDate);
             const hasAvailability = quantity <= turnaround.max_quantity;
             const additionalCost = basePrice ? `+ $${((turnaroundOption.turnaround_multiplier * basePrice) - basePrice).toFixed(2)}` : null;
-            const dollarSigns = turnaroundOption.turnaround_multiplier > 1.2 ? '+ $$$' : turnaroundOption.turnaround_multiplier > 1.1 ? '+ $$' : turnaroundOption.turnaround_multiplier > 1.0 ? '+ $' : '';
+            const dollarSigns = turnaroundOption.turnaround_multiplier > 1.2 ? '+$$$' : turnaroundOption.turnaround_multiplier > 1.1 ? '+$$' : turnaroundOption.turnaround_multiplier > 1.0 ? '+$' : '';
             return (
               <div className={styles ? styles["turnaroundOption__option"] : "turnaroundOption__option"}
                 key={i}

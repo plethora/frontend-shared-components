@@ -125,7 +125,7 @@ class TurnaroundOptionsPicker extends PopUp {
     );
   }
 
-  findAvailability(previousDay, turnaroundOption) {
+  findAvailability(previousDay, turnaroundOption, quantity) {
     const { turnarounds } = this.props;
     const startingIndex = previousDay ? findIndex(turnarounds, t => t.days === previousDay + 1) : 0;
 

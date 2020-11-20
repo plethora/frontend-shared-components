@@ -143,7 +143,9 @@ var TurnaroundOptionsPicker = function (_PopUp) {
         'div',
         { className: styles ? styles["turnaroundOption__dropdown"] : "turnaroundOption__dropdown" },
         turnaroundOptions.map(function (turnaroundOption, i) {
+          var selectionDate = (0, _addBusinessDays2.default)(_this3.getToday(false, true), turnaroundOption.turnaround_days, _this3.state.blackOutDays, _this3.state.localTimeCutoff);
           var previousDay = i > 0 ? turnaroundOptions[i - 1].turnaround_days : null;
+
           var hasAvailability = _this3.findAvailability(previousDay, turnaroundOption, quantity);
           var additionalCost = basePrice ? '+ $' + (turnaroundOption.turnaround_multiplier * basePrice - basePrice).toFixed(2) : null;
           var dollarSigns = turnaroundOption.turnaround_multiplier > 1.2 ? '+$$$' : turnaroundOption.turnaround_multiplier > 1.1 ? '+$$' : turnaroundOption.turnaround_multiplier > 1.0 ? '+$' : '';
@@ -178,7 +180,7 @@ var TurnaroundOptionsPicker = function (_PopUp) {
     }
   }, {
     key: 'findAvailability',
-    value: function findAvailability(previousDay, turnaroundOption) {
+    value: function findAvailability(previousDay, turnaroundOption, quantity) {
       var turnarounds = this.props.turnarounds;
 
       var startingIndex = previousDay ? (0, _lodash.findIndex)(turnarounds, function (t) {

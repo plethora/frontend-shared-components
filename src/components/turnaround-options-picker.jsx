@@ -1,6 +1,6 @@
 /* eslint-disable no-unsafe-finally */
 'use strict';
-import { bindAll, get, compact, find } from 'lodash';
+import { bindAll, get, find, findIndex } from 'lodash';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -94,9 +94,8 @@ class TurnaroundOptionsPicker extends PopUp {
     return (
         <div className={styles ? styles["turnaroundOption__dropdown"] : "turnaroundOption__dropdown"}>
           {turnaroundOptions.map((turnaroundOption, i) => {
-            const selectionDate = addBusinessDays(this.getToday(false, true), turnaroundOption.turnaround_days, this.state.blackOutDays, this.state.localTimeCutoff)
-            const turnaround = this.findTurnaroundByMoment(selectionDate);
-            const hasAvailability = quantity <= turnaround.max_quantity;
+            const previousDay = i > 0 ? turnaroundOptions[i - 1].turnaround_days : null;
+            const hasAvailability = this.findAvailability(previousDay, turnaroundOption, quantity);
             const additionalCost = basePrice ? `+ $${((turnaroundOption.turnaround_multiplier * basePrice) - basePrice).toFixed(2)}` : null;
             const dollarSigns = turnaroundOption.turnaround_multiplier > 1.2 ? '+$$$' : turnaroundOption.turnaround_multiplier > 1.1 ? '+$$' : turnaroundOption.turnaround_multiplier > 1.0 ? '+$' : '';
             return (
@@ -122,6 +121,19 @@ class TurnaroundOptionsPicker extends PopUp {
           </div>
         </div>
     );
+  }
+
+  findAvailability(previousDay, turnaroundOption) {
+    const { turnarounds } = this.props;
+    const startingIndex = previousDay ? findIndex(turnarounds, t => t.days === previousDay + 1) : 0;
+
+    for (let i = startingIndex; i < turnarounds.length; i++) {
+      const turnaround = turnarounds[i];
+
+      if (turnaround.days > turnaroundOption.turnaround_days) return false;
+      else if (turnaround.max_quantity >= quantity) return true;
+    }
+    return false;
   }
 
   findTurnaroundByMoment(m) {

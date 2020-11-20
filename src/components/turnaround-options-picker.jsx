@@ -94,9 +94,8 @@ class TurnaroundOptionsPicker extends PopUp {
     return (
         <div className={styles ? styles["turnaroundOption__dropdown"] : "turnaroundOption__dropdown"}>
           {turnaroundOptions.map((turnaroundOption, i) => {
-            const selectionDate = addBusinessDays(this.getToday(false, true), turnaroundOption.turnaround_days, this.state.blackOutDays, this.state.localTimeCutoff)
+            const selectionDate = addBusinessDays(this.getToday(false, true), turnaroundOption.turnaround_days, this.state.blackOutDays, this.state.localTimeCutoff);
             const previousDay = i > 0 ? turnaroundOptions[i - 1].turnaround_days : null;
-
             const hasAvailability = this.findAvailability(previousDay, turnaroundOption, quantity);
             const additionalCost = basePrice ? `+ $${((turnaroundOption.turnaround_multiplier * basePrice) - basePrice).toFixed(2)}` : null;
             const dollarSigns = turnaroundOption.turnaround_multiplier > 1.2 ? '+$$$' : turnaroundOption.turnaround_multiplier > 1.1 ? '+$$' : turnaroundOption.turnaround_multiplier > 1.0 ? '+$' : '';
@@ -136,20 +135,6 @@ class TurnaroundOptionsPicker extends PopUp {
       else if (turnaround.max_quantity >= quantity) return true;
     }
     return false;
-  }
-
-  findTurnaroundByMoment(m) {
-    const { turnarounds } = this.props;
-    const dateToFind = momentToPlainDate(m).join('-');
-
-    for (let index = 0; index < turnarounds.length; index++) {
-      const turnaround = turnarounds[index];
-
-      if (turnaround.date.join('-') === dateToFind) {
-        return turnaround;
-      }
-    }
-    return { max_quantity: 0 };
   }
 
   /**

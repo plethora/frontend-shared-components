@@ -190,7 +190,7 @@ var TurnaroundOptionsPicker = function (_PopUp) {
       for (var i = startingIndex; i < turnarounds.length; i++) {
         var turnaround = turnarounds[i];
 
-        if (turnaround.days > turnaroundOption.turnaround_days) return false;else if (turnaround.max_quantity >= quantity) return true;
+        if (turnaround.days > turnaroundOption.turnaround_days && turnaroundnOption.turnaround_days !== 25) return false;else if (turnaround.max_quantity >= quantity) return true;
       }
       return false;
     }

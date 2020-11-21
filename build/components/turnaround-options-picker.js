@@ -182,9 +182,10 @@ var TurnaroundOptionsPicker = function (_PopUp) {
     value: function findAvailability(previousDay, turnaroundOption, quantity) {
       var turnarounds = this.props.turnarounds;
 
-      var startingIndex = (0, _lodash.findIndex)(turnarounds, function (t) {
+      var prevIndex = (0, _lodash.findIndex)(turnarounds, function (t) {
         return t.days === previousDay + 1;
-      }) || 0;
+      });
+      var startingIndex = prevIndex > -1 ? prevIndex : 0;
 
       for (var i = startingIndex; i < turnarounds.length; i++) {
         var turnaround = turnarounds[i];

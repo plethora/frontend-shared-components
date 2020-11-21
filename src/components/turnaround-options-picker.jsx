@@ -102,7 +102,7 @@ class TurnaroundOptionsPicker extends PopUp {
             return (
               <div className={styles ? styles["turnaroundOption__option"] : "turnaroundOption__option"}
                 key={i}
-                style={!hasAvailability? {pointerEvents: 'none',cursor:'not-allowed !important', backgroundColor:'#dddddd', color:'#777777'}: {}}
+                style={!hasAvailability ? {pointerEvents: 'none',cursor:'not-allowed !important', backgroundColor:'#dddddd', color:'#777777'}: {}}
                 onClick={() => {
                   this.handleSelectDate(selectionDate, turnaroundOption);
                   if (onToggle) onToggle();
@@ -126,7 +126,7 @@ class TurnaroundOptionsPicker extends PopUp {
 
   findAvailability(previousDay, turnaroundOption, quantity) {
     const { turnarounds } = this.props;
-    const startingIndex = previousDay ? findIndex(turnarounds, t => t.days === previousDay + 1) : 0;
+    const startingIndex = findIndex(turnarounds, t => t.days === previousDay + 1) || 0;
 
     for (let i = startingIndex; i < turnarounds.length; i++) {
       const turnaround = turnarounds[i];

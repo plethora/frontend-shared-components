@@ -145,7 +145,6 @@ var TurnaroundOptionsPicker = function (_PopUp) {
         turnaroundOptions.map(function (turnaroundOption, i) {
           var selectionDate = (0, _addBusinessDays2.default)(_this3.getToday(false, true), turnaroundOption.turnaround_days, _this3.state.blackOutDays, _this3.state.localTimeCutoff);
           var previousDay = i > 0 ? turnaroundOptions[i - 1].turnaround_days : null;
-
           var hasAvailability = _this3.findAvailability(previousDay, turnaroundOption, quantity);
           var additionalCost = basePrice ? '+ $' + (turnaroundOption.turnaround_multiplier * basePrice - basePrice).toFixed(2) : null;
           var dollarSigns = turnaroundOption.turnaround_multiplier > 1.2 ? '+$$$' : turnaroundOption.turnaround_multiplier > 1.1 ? '+$$' : turnaroundOption.turnaround_multiplier > 1.0 ? '+$' : '';
@@ -183,9 +182,9 @@ var TurnaroundOptionsPicker = function (_PopUp) {
     value: function findAvailability(previousDay, turnaroundOption, quantity) {
       var turnarounds = this.props.turnarounds;
 
-      var startingIndex = previousDay ? (0, _lodash.findIndex)(turnarounds, function (t) {
+      var startingIndex = (0, _lodash.findIndex)(turnarounds, function (t) {
         return t.days === previousDay + 1;
-      }) : 0;
+      }) || 0;
 
       for (var i = startingIndex; i < turnarounds.length; i++) {
         var turnaround = turnarounds[i];
@@ -193,22 +192,6 @@ var TurnaroundOptionsPicker = function (_PopUp) {
         if (turnaround.days > turnaroundOption.turnaround_days) return false;else if (turnaround.max_quantity >= quantity) return true;
       }
       return false;
-    }
-  }, {
-    key: 'findTurnaroundByMoment',
-    value: function findTurnaroundByMoment(m) {
-      var turnarounds = this.props.turnarounds;
-
-      var dateToFind = (0, _turnarounds.momentToPlainDate)(m).join('-');
-
-      for (var index = 0; index < turnarounds.length; index++) {
-        var turnaround = turnarounds[index];
-
-        if (turnaround.date.join('-') === dateToFind) {
-          return turnaround;
-        }
-      }
-      return { max_quantity: 0 };
     }
 
     /**

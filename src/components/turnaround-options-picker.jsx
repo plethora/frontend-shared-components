@@ -132,7 +132,7 @@ class TurnaroundOptionsPicker extends PopUp {
     for (let i = startingIndex; i < turnarounds.length; i++) {
       const turnaround = turnarounds[i];
 
-      if (turnaround.days > turnaroundOption.turnaround_days && turnaroundnOption.turnaround_days !== 25) return false;
+      if (turnaround.days > turnaroundOption.turnaround_days && turnaroundOption.turnaround_days !== 25) return false;
       else if (turnaround.max_quantity >= quantity) return true;
     }
     return false;

@@ -1,0 +1,129 @@
+//
+// shared constants
+// this file is intended to be included by reference:
+// @import (reference) './_shared.less';
+//
+
+// colors
+@green: #4BCC77;
+@light-green: fade(@green, 50%);
+@grey: #ececec;
+@yellow: #f8ec23;
+@highlight-yellow: #fff903;
+@dark-grey: #acacac;
+@red: #ed1c24;
+@blue: #43b8e2;
+
+@text-color: #000;
+@background-color: white;
+@hover-background-color: @yellow;
+
+// banners
+@banner-text-color: rgba(0, 0, 0, 0.5);
+@banner-border-color: white;
+@info-background-color: #d8f4ff;
+@info-color: #5bb5d8;
+@danger-background-color: #ffeeee;
+@danger-color: darken(@danger-background-color, 27%);
+@warning-background-color: #fff9ee;
+@warning-color: darken(@warning-background-color, 36%);
+@success-background-color: #eefff0;
+@success-color: #1ea74c;
+@announce-background-color: @info-background-color;
+@announce-color: @info-color;
+
+@black-bg-text-color: #fff;
+@black-bg-text-hover: #ddd;
+
+
+@spin-color: #999;
+
+
+@icon-width: 14px;
+
+
+@navbar-background-color: white;
+@navbar-border-color: #5c5c5c;
+@navbar-text-color: white;
+
+
+@button-background-color: white;
+@button-border-color: #999;
+@button-text-color: #666;
+
+@button-primary-background-color: #1ea74c;
+@button-primary-border-color: #1a8e41;
+@button-primary-text-color: white;
+@button-primary-text-shadow-color: rgba(76, 76, 76, 0.75);
+
+@button-disabled-background-color: #d8d8d8;
+@button-disabled-border-color: #d4d4d4;
+@button-disabled-text-color: #acacac;
+@button-disabled-text-shadow-color: @button-disabled-border-color;
+
+@checkbox-background-color: white;
+@checkbox-border-color: black;
+@checkbox-color: black;
+
+@arrow-disabled-opacity: 0.275;
+
+@backdrop-color: rgba(0,0,0, 0.2);
+
+
+@input-border-color: #d8d8d8;
+@input-placeholder-color: #eaeaea;
+
+
+@popup-background-color: white;
+@popup-border-color: white;
+@popup-shadow-color: rgba(0, 0, 0, 0.25);
+@popup-text-color: rgba(0, 0, 0, 0.5);
+
+
+@success-icon-background-color: white;
+@warning-icon-background-color: white;
+@danger-icon-background-color: white;
+
+
+@tooltip-color: #000;
+@dismiss-color: #aeaeae;
+
+
+@tree-background-color: white;
+
+
+// typography
+@font-family: Neue Haas Unica, Unica77, Helvetica, sans-serif;
+@font-family-title: Simplon Mono;
+@font-size: 12px;
+@font-size-large: 14px;
+@font-weight-light: light;
+@font-weight-normal: normal;
+@font-weight-bold: bold;
+@letter-spacing: 0.3px;
+@letter-spacing-title: 0.8px;
+
+// animation
+@fade-in-time: 108ms;
+@fade-out-time: 306ms;
+@fade-time: @fade-out-time;
+
+
+@app-background-color: white;
+@panel-background-color: #f9f9f9;
+@bar-background-color: white;
+
+//
+// mixins
+//
+
+.no-outline {
+  // note that, for accessiblity, doing this is naughty
+  // better would be to allow the outline to be visible when on the open web
+  // (with simpatico styling)
+  outline: none;
+}
+
+.spacer {
+  flex: 1;
+}

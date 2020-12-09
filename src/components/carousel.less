@@ -1,0 +1,67 @@
+@import (reference) './_shared.less';
+
+.carousel {
+  background-color: @grey;
+  display: flex;
+
+  .left-arrow, .right-arrow {
+    color: black;
+    display: flex;
+    align-items: center;
+    font-size: @font-size;
+
+    .icon {
+      padding: 3px;
+      cursor: pointer;
+    }
+  }
+
+  .left-arrow {
+    padding-right: 3px;
+  }
+
+  .right-arrow {
+    padding-left: 3px;
+  }
+
+  .content {
+    flex: 1;
+    color: black;
+
+    .top, .bottom {
+      display: flex;
+    }
+
+    .bottom {
+      align-items: center;
+      padding: 0 10px 10px 10px;
+      font-family: @font-family;
+      letter-spacing: @letter-spacing;
+    }
+  }
+}
+
+.transition-group {
+  // keep these :globals nested in a module scope!
+  :global {
+    .carousel-leave {
+      opacity: 1;
+    }
+    .carousel-leave.carousel-leave-active {
+      opacity: 0;
+      transition: opacity 300ms ease-out;
+    }
+
+    .carousel-enter {
+      opacity: 0;
+    }
+    .carousel-enter.carousel-enter-active {
+      opacity: 1;
+      transition: opacity 300ms ease-in;
+    }
+
+    .carousel-height {
+      transition: height 300ms ease-in-out;
+    }
+  }
+}

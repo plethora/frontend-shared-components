@@ -1,0 +1,17 @@
+@import (reference) './_shared.less';
+
+.enter, .appear {
+  opacity: 0.01;
+}
+.enter.enterActive, .appear.appearActive {
+  opacity: 1;
+  transition: opacity @fade-in-time linear;
+}
+
+.exit {
+  opacity: 1;
+}
+.exit.exitActive {
+  opacity: 0.01;
+  transition: opacity @fade-out-time linear;
+}

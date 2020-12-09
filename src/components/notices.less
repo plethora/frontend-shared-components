@@ -1,0 +1,60 @@
+@import (reference) './_shared.less';
+
+.notices {
+  cursor: default;
+  color: black;
+  font-family: @font-family;
+  font-weight: @font-weight-normal;
+  letter-spacing: @letter-spacing;
+  -webkit-font-smoothing: antialiased;
+
+  .icon {
+    cursor: pointer;
+    font-size: @icon-width;
+  }
+
+  .container {
+    position: relative;
+
+    .tail {
+      color: @grey;
+      font-size: 20px;
+      position: absolute;
+      right: 9px;
+      top: -13px;
+      transform: scale(1.75, 1);
+    }
+
+    .bar {
+      padding: 20px 10px 0 10px;
+      display: flex;
+      align-items: center;
+      background-color: @grey;
+
+      .title {
+        align-self: flex-start;
+        font-weight: @font-weight-bold;
+      }
+
+      .cross {
+        margin-left: auto;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.notice {
+  -webkit-font-smoothing: antialiased;
+  color: black;
+  cursor: pointer;
+  font-family: @font-family;
+  font-weight: @font-weight-normal;
+  letter-spacing: @letter-spacing;
+  padding: 10px;
+
+  button {
+    color: black;
+    -webkit-font-smoothing: antialiased;
+  }
+}

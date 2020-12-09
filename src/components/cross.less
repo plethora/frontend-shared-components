@@ -1,0 +1,21 @@
+@import (reference) '../components/_shared.less';
+
+@cross-width: 10px;
+
+.cross {
+  background: url('../images/ex.png') center no-repeat;
+  background-position: center center;
+  background-size: @cross-width;
+  height: @cross-width;
+  width: @cross-width;
+  transition: transform @fade-in-time ease-in;
+
+  &:hover {
+    opacity: 0.6;
+  }
+
+  &.invert {
+    filter: invert(1);
+  }
+}
+

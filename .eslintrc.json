@@ -1,0 +1,71 @@
+{
+  "extends": "eslint:recommended",
+  "plugins": [
+    "react",
+    "jsx-a11y",
+    "import"
+  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "modules": true,
+      "jsx": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "rules": {
+    "indent": ["warn", 2, { "SwitchCase": 1, "MemberExpression": 0 }],
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
+    "curly": "off",
+    "comma-dangle": "off",
+    "no-caller": "warn",
+    "no-alert": "warn",
+    "no-eval": "warn",
+    "no-shadow-restricted-names": "warn",
+    "no-shadow": "warn",
+    "no-use-before-define": ["error", { "functions": false, "classes": false }],
+
+    "default-case": "warn",
+    "no-div-regex": "warn",
+    "no-labels": "warn",
+    "no-empty-pattern": "warn",
+
+    "new-cap": "warn",
+    "new-parens": "warn",
+
+    "jsx-quotes": "warn",
+
+    "react/jsx-boolean-value": "warn",
+    "react/jsx-curly-spacing": "warn",
+    "react/jsx-equals-spacing": "warn",
+    "react/jsx-key": "warn",
+    "react/jsx-no-duplicate-props": "warn",
+    "react/jsx-no-undef": "warn",
+    "react/jsx-pascal-case": "warn",
+    "react/jsx-uses-react": "warn",
+    "react/jsx-uses-vars": "warn",
+    "react/no-danger": "warn",
+    "react/no-deprecated": "warn",
+    "react/no-did-mount-set-state": "warn",
+    "react/no-did-update-set-state": "warn",
+    "react/no-direct-mutation-state": "warn",
+    "react/no-is-mounted": "warn",
+    "react/no-unknown-property": "warn",
+    "react/prefer-es6-class": "warn",
+    "react/prop-types": ["warn", { "ignore": ["className"]}],
+    "react/react-in-jsx-scope": "warn",
+    "react/self-closing-comp": ["error", { "component": true }],
+
+    "no-unused-vars": ["warn", {
+      "vars": "all",
+      "args": "after-used",
+      "argsIgnorePattern": "(^_|^e$)"
+    }]
+  }
+}

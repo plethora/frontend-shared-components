@@ -260,9 +260,9 @@ var TurnaroundOptionsPicker = function (_PopUp) {
       var selectedPartTurnaround = selectedPart ? turnaroundOptions[selectedPart.turnaround_idx] : null;
       var selected = noOrder ? selectedPartTurnaround ? (0, _lodash.get)(selectedPartTurnaround, 'name') : (0, _lodash.get)((0, _lodash.find)(turnaroundOptions, function (t) {
         return t.turnaround_days >= selectedPart.defaultTurnaroundTime;
-      }), 'name') : orderTurnaroundtime ? (0, _lodash.get)((0, _lodash.find)(turnaroundOptions, function (t) {
+      }), 'name') : orderTurnaroundtime ? orderTurnaroundtime <= 25 ? (0, _lodash.get)((0, _lodash.find)(turnaroundOptions, function (t) {
         return t.turnaround_days >= orderTurnaroundtime;
-      }), 'name') : defaultOption ? defaultOption : 'No Options Available';
+      }), 'name') : (0, _lodash.get)(turnaroundOptions, '[' + (turnaroundOptions.length - 1) + ']name') : defaultOption ? defaultOption : 'No Options Available';
       if (turnarounds && !selected) selected = "Loading...";
       return _react2.default.createElement(
         'div',

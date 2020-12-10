@@ -190,7 +190,7 @@ class TurnaroundOptionsPicker extends PopUp {
 
     const { defaultOption, open } = this.state;
     const selectedPartTurnaround = selectedPart ? turnaroundOptions[selectedPart.turnaround_idx] : null;
-    let selected = noOrder ? selectedPartTurnaround ? get(selectedPartTurnaround, 'name') : get(find(turnaroundOptions, t => t.turnaround_days >= selectedPart.defaultTurnaroundTime), 'name') : orderTurnaroundtime ? get(find(turnaroundOptions, t => t.turnaround_days >= orderTurnaroundtime), 'name') : defaultOption ?defaultOption : 'No Options Available';
+    let selected = noOrder ? selectedPartTurnaround ? get(selectedPartTurnaround, 'name') : get(find(turnaroundOptions, t => t.turnaround_days >= selectedPart.defaultTurnaroundTime), 'name') : orderTurnaroundtime ? orderTurnaroundtime <= 25 ? get(find(turnaroundOptions, t => t.turnaround_days >= orderTurnaroundtime), 'name') : get(turnaroundOptions, `[${turnaroundOptions.length - 1}]name`) : defaultOption ?defaultOption : 'No Options Available';
     if (turnarounds && !selected) selected = "Loading...";
     return (
       <div>

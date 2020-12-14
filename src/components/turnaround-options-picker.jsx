@@ -90,7 +90,7 @@ class TurnaroundOptionsPicker extends PopUp {
 
   renderDropdown() {
     const { appState, onToggle, order, quantity, selectedPart, selectedShipDate, styles, turnaroundOptions } = this.props;
-    const basePrice = selectedPart && selectedShipDate ? appState === 'ReadyToAddToCart' ? get(find(get(selectedShipDate, 'prices'), p => p.quantity === quantity),totalPrice) : null : order ? order.base_price : null;
+    const basePrice = selectedPart && selectedShipDate ? appState === 'ReadyToAddToCart' ? get(find(get(selectedShipDate, 'prices'), p => p.quantity === quantity),'totalPrice') : null : order ? order.base_price : null;
     return (
         <div className={styles ? styles["turnaroundOption__dropdown"] : "turnaroundOption__dropdown"}>
           {turnaroundOptions.map((turnaroundOption, i) => {

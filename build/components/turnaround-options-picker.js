@@ -141,7 +141,7 @@ var TurnaroundOptionsPicker = function (_PopUp) {
 
       var basePrice = selectedPart && selectedShipDate ? appState === 'ReadyToAddToCart' ? (0, _lodash.get)((0, _lodash.find)((0, _lodash.get)(selectedShipDate, 'prices'), function (p) {
         return p.quantity === quantity;
-      }), totalPrice) : null : order ? order.base_price : null;
+      }), 'totalPrice') : null : order ? order.base_price : null;
       return _react2.default.createElement(
         'div',
         { className: styles ? styles["turnaroundOption__dropdown"] : "turnaroundOption__dropdown" },
